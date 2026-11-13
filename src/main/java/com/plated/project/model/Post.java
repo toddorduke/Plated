@@ -18,6 +18,10 @@ public class Post {
     private long rate;
     private String imgUrl;
     private long ticketNo;
+    // TODO: replace loggedByName/loggedByAvatarUrl with a real User relation once auth is wired in.
+    private String loggedByName;
+    private String loggedByAvatarUrl;
+    private String date;
 
     @Id
     @GeneratedValue
@@ -99,5 +103,29 @@ public class Post {
 
     public void setTicketNo(long ticketNo) {
         this.ticketNo = ticketNo;
+    }
+
+    public String getLoggedByName() {
+        return loggedByName;
+    }
+
+    public void setLoggedByName(String loggedByName) {
+        this.loggedByName = loggedByName;
+    }
+
+    public String getLoggedByAvatarUrl() {
+        return loggedByAvatarUrl;
+    }
+
+    public void setLoggedByAvatarUrl(String loggedByAvatarUrl) {
+        this.loggedByAvatarUrl = loggedByAvatarUrl;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

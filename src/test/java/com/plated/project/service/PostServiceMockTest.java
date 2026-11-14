@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -59,6 +60,12 @@ public class PostServiceMockTest {
      Post result = postService.findById(5);
      assertEquals(post, result);
      verify(postRepository).findById(5L);
-
  }
+ @Test
+    void findByIdShouldThrowWhenPostDoesNotExist(){
+        when(postRepository.findById(99L))
+            .thenReturn(Optional.empty());
+        assertThrows(NoSuchElementException.class, () -> postService.findById(99));
+ }
+
 }

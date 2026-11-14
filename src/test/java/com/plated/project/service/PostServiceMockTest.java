@@ -66,6 +66,7 @@ public class PostServiceMockTest {
         when(postRepository.findById(99L))
             .thenReturn(Optional.empty());
         assertThrows(NoSuchElementException.class, () -> postService.findById(99));
+        verify(postRepository).findById(99L);
  }
 
 }

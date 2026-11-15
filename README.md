@@ -9,6 +9,41 @@ Plated is the backend REST API for a food-review social app, where users share p
 - Like and unlike a post, with the like count updating automatically
 - Data stored in an in-memory H2 database through Spring Data JPA
 
+Here's the full section, ready to paste:
+
+```markdown
+## Testing
+
+Unit tests cover the service layer and the controller layer.
+
+### What's tested
+**Service layer (`PostService`)**
+- `toggleLike`: liking, unliking, and toggling twice (JUnit 5)
+- `createPost`: resets likes and liked state, saves once (Mockito)
+- `getAllPosts`: returns the posts from the repository (Mockito)
+- `findById`: returns the post when found, throws `NoSuchElementException` when not found (Mockito)
+
+**Controller layer (`PostController`)**
+- `GET /api/posts`
+- `GET /api/posts/{id}`
+- `POST /api/posts`
+- `PUT /api/posts/{id}/like`
+
+### How it's tested
+- Service tests fake the repository with Mockito, so no database is needed.
+- Controller tests use `@WebMvcTest` and MockMvc, with the service faked using `@MockitoBean`.
+- Tests check status codes, the JSON returned, and that the right service calls were made.
+
+### Tools
+- JUnit 5
+- Mockito
+- MockMvc (Spring Boot test)
+
+### How to run
+- From a terminal: `./mvnw test`
+- From IntelliJ: right-click a test class and choose Run
+
+
 ## Tech Stack
 
 - Java 17

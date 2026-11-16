@@ -3,6 +3,7 @@ package com.plated.project.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Comment {
@@ -12,6 +13,16 @@ public class Comment {
     private Long id;
     private String text;
     private String author;
+    @ManyToOne
+    private Post post;
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
 
     public Long getId() {
         return id;

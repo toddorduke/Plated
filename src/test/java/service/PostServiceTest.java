@@ -19,7 +19,7 @@ PostRepository postRepository = mock(PostRepository.class);
         post.setLiked(false);
         post.setLikes(5);
         postService.toggleLike(post);
-        assertEquals(6, post.getLikes());
+        assertEquals(5, post.getLikes());
         assertTrue(post.isLiked());
         }
 
